@@ -42,4 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * @param int $userId
+     * @return mixed
+     */
+    public static function getById(int $userId)
+    {
+        return User::where('id', $userId)->first();
+    }
 }
