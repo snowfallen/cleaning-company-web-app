@@ -34,6 +34,7 @@ export default {
           .then(response => {
             store.commit('setToken', response.data["accessToken"])
             localStorage.setItem('userId', response.data["data"]['id'])
+            localStorage.setItem('accessToken', response.data["accessToken"])
             this.$router.push({name: 'pages.home'});
           }).catch(error => {
         console.log(error)

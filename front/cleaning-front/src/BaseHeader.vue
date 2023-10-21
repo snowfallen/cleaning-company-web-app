@@ -32,6 +32,7 @@ export default {
           .then(response => {
             store.commit('deleteToken')
             localStorage.removeItem('userId')
+            localStorage.removeItem('accessToken')
             this.$router.push({name: 'user.login'})
           })
     }
