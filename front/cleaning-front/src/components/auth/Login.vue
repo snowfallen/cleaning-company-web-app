@@ -18,7 +18,7 @@
 </template>
 
 <script>
-// import store from "../../../store.js";
+import store from "../../store.js";
 
 export default {
   name: "Login",
@@ -32,8 +32,8 @@ export default {
     login() {
       axios.post('http://127.0.0.1:8000/api/V1/login', {email: this.email, password: this.password})
           .then(response => {
-            console.log(response)
-            // store.commit('setToken', response.config.headers['X-XSRF-TOKEN'])
+            store.commit('setToken', response.data["accessToken"])
+            localStorage.setItem('userId', response.data["data"]['id'])
             this.$router.push({name: 'pages.home'});
           }).catch(error => {
         console.log(error)
